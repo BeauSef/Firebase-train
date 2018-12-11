@@ -1,0 +1,11 @@
+.title{
+    text-align: center;
+    color:red;
+}
+.card-header{
+    text-align: center;
+    color: red;
+}
+p, .table, .form-group{
+    color: green;
+}

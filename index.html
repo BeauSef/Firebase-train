@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Linking CSS and JaavaScript-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="JavaScript" href="assets/javascript/app.js">
+    <!--Linking bootstrap and firebase-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <title>Train Schedule</title>
+</head>
+
+
+<body>
+    <!-- This will be the jumbotron section and title -->
+    <div class="container">
+        <div class="jumbotron container-fluid">
+            <div class="title">
+                <h1>Polar Express</h1>
+                <p>Find Magical Destination</p>
+            </div>
+        </div>
+            <!-- This will be were all the data entered will show -->
+        <div class="card" style="width: mx-auto;">
+            <div class="card-header">
+                Current Train Schedule
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency (minutes)</th>
+                        <th scope="col">Next Arrivial</th>
+                        <th scope="col">Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody id="TrainData">
+                </tbody>
+            </table>
+        </div><br>
+            <!-- This is where the user will input their information -->
+        <div class="card" style="width: mx-auto;">
+            <div class="card-header">
+                Add Train
+            </div>
+            <form>
+                <div class="container">
+                    <div class="form-group"><br>
+                        <label for="trainName">Train Name</label>
+                        <input type="text" class="form-control" id="employeeNameValue">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="employeeRoleValue">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstTrain">First Train Time (HH:mm - military time)</label>
+                        <input type="text" class="form-control" id="startDateValue">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency">Frequency (minutes)</label>
+                        <input type="text" class="form-control" id="monthlyRateValue">
+                    </div>
+                    <button type="submit" class="btn btn-danger" id="add-train">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Linking jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
