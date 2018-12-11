@@ -1,11 +1,18 @@
+#background{
+    width: 60%;
+}
 .title{
     text-align: center;
     color:red;
 }
 .card-header{
     text-align: center;
+    font-size: 20px;
     color: red;
 }
 p, .table, .form-group{
     color: green;
+}
+body{
+    background-color: red;
 }
