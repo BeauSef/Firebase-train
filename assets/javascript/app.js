@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCFKBiuWbMJc5mT_mr9p_Tjk27zgSedbmQ",
@@ -10,24 +12,57 @@ var config = {
 firebase.initializeApp(config);
 
 // variables
-trainData = firebase.database();
+var trainData = firebase.database();
+
 var name = "";
 var destination = "";
 var firstTrain = "";
 var frequency = "";
+
+
+
 // Creating my on click for submit
 $("#add-train").on("click", function (event) {
     event.preventDefault();
 
-    trainData = firebase.database();
-    name = $("#trainName").val().trim();
-    destination = $("#destination").val().trim();
-    firstTrain = $("#firstTrain").val().trim();
-    frequency = $("#frequency").val().trim();
+     name = $("#trainName").val().trim();
+     destination = $("#destination").val().trim();
+     firstTrain = $("#firstTrain").val().trim();
+     frequency = $("#frequency").val().trim();
+    // Console logs what the user inputs
+     console.log(name);
+     console.log(destination);
+     console.log(firstTrain);
+     console.log(frequency);
 
-    trainData.ref().push()
+    // This is what will push to firebase
+    trainData.ref().push({
+            trainName: name,
+           destination: destination,
+            firstTrain: firstTrain,
+            frequency: frequency, 
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
+})
 
-    })
+trainData.ref().on("child_added", function(snapshot){
+
+console.log(snapshot.val());
+
+
+// Grabs our table row
+var newRow = $("<tr>").append(
+    $("<td>").text(name),
+    $("<td>").text(destination),
+    $("<td>").text(firstTrain),
+    $("<td>").text(frequency),
+)
+    // Append the new row to the table
+  $(".table > tbody").append(newRow);
+
+})
+
+})
 
 // Grab user inputs and then clear it out
 // Create firebase event 
@@ -46,5 +81,9 @@ $("#add-train").on("click", function (event) {
 // var diffTime = moment().diff(trainTime, "minutes"); =16
 // var nowTime = diffTIme % frequency;
 //}
+
+// moment() is important 
+// moment().format(HH:mm)
+// to add do moment().add(7,mm)
 
 // lets say first train is 3:00 and frequency is 7 min and current time is 3:16 you would do 16 from the time of 3:00 and do 16 % 7 because it comes every 7 min frequency
