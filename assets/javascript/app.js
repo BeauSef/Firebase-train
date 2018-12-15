@@ -79,25 +79,7 @@ $(document).ready(function () {
         console.log(nextTrain);
 
         trainData.ref().push();
-
-        // var timeRemainder = timeDifference % frequency;
-
-
-        // console.log(timeRemainder)
-
-        // var trainStart = frequency - timeRemainder;
-
-        // var nextTrain = moment().add(trainStart, "minutes");
-        // console.log(nextTrain);
-
-        // var nextTrainConverted = moment(nextTrain).format("HH:mm");
-        // console.log(nextTrainConverted);
-
-
         
-        // console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
-        // console.log("Train Starts:" + moment(firstTrain).format("HH:mm"));
-            console.log(firstTrain);
         // Grabs our table row
         var newRow = $("<tr>").append(
             $("<td>").text(name),
