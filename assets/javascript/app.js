@@ -84,6 +84,8 @@ $(document).ready(function () {
 
         var minutesAway = trainRemainder % currentTime;
         console.log(minutesAway)    
+        // var minutesAway = currentTime.format("mm");
+        // console.log(minutesAway)
 
 
         trainData.ref().push();
