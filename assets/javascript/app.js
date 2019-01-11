@@ -68,6 +68,8 @@ $(document).ready(function () {
         var currentTime = moment();
         console.log(currentTime);
 
+        var timeNow = moment().format("HH:mm");
+
         var diffTime = moment().diff(firstTimeConverted,"minutes");
         console.log(diffTime);
 
@@ -77,19 +79,22 @@ $(document).ready(function () {
         var trainMinutes = frequency - trainRemainder;
         console.log(trainMinutes);
 
-        var minutesAway = currentTime.format("mm");
-        console.log(minutesAway)
-
         var nextTrain = currentTime.add(trainMinutes, "minutes" ).format("HH:mm");
         console.log(nextTrain);
+
+        var minutesAway = trainRemainder % currentTime;
+        console.log(minutesAway)    
+
+
         trainData.ref().push();
 
         // Grabs our table row
         var newRow = $("<tr>").append(
             $("<td>").text(name),
             $("<td>").text(destination),
+            $("<td>").text(timeNow),
             $("<td>").text(trainMinutes),
-            $("<td>").text(nextTrain),
+            $("<td>").text(firstTrain),
             $("<td>").text(minutesAway),
         )
         // Append the new row to the table
