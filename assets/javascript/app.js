@@ -61,41 +61,24 @@ $(document).ready(function () {
         var frequency = snapshot.val().frequency;
 
         // adding variables to call in html
-
-        var firstTimeConverted = moment(firstTrain, "HH:mm").TIMESTAMP;
-        console.log(firstTimeConverted);
-
-        var currentTime = moment();
-        console.log(currentTime);
-
-        var timeNow = moment().format("HH:mm");
-
-        var diffTime = moment().diff(firstTimeConverted,"minutes");
-        console.log(diffTime);
-
+        var firstTimeConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
         var trainRemainder = diffTime % frequency;
-        console.log(trainRemainder);
-
+        var frequency = frequency;
         var trainMinutes = frequency - trainRemainder;
-        console.log(trainMinutes);
-
-        var nextTrain = currentTime.add(trainMinutes, "minutes" ).format("HH:mm");
-        console.log(nextTrain);
-
-        var minutesAway = trainRemainder % currentTime;
-        console.log(minutesAway)    
-     
-
-
+        var currentTime = moment().format("HH:mm");
+        var nextTrain = moment().add(trainMinutes, "minutes" ).format("HH:mm");
+        var minutesAway = moment(trainMinutes, "minutes" ).format("mm");
+    
         trainData.ref().push();
 
         // Grabs our table row
         var newRow = $("<tr>").append(
             $("<td>").text(name),
             $("<td>").text(destination),
-            $("<td>").text(timeNow),
-            $("<td>").text(trainMinutes),
-            $("<td>").text(firstTrain),
+            $("<td>").text(currentTime),
+            $("<td>").text(frequency),
+            $("<td>").text(nextTrain),
             $("<td>").text(minutesAway),
         )
         // Append the new row to the table
